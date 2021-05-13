@@ -20,7 +20,7 @@
 
 <script>
 import http from "../http-common";
-
+import stomp from "../stomp";
 
 export default {
   name: "employee",
@@ -40,7 +40,8 @@ export default {
         .then(response => {
           this.employee.active = response.data.active;
           console.log(response.data);
-         
+          stomp.connect();
+          stomp.send();
         })
         .catch(e => {
           console.log(e);

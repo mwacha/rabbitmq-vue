@@ -33,7 +33,8 @@
 
 <script>
 import http from "../http-common";
-import stomp from "../stomp";
+import SockJS from "sockjs-client";
+import Stomp from "webstomp-client";
 
 export default {
   name: "add-employee",
@@ -63,17 +64,13 @@ export default {
         .post("/employees", data)
         .then(response => {
           this.employee.id = response.data.id;
-           stomp.connect();
-          stomp.send();
-          console.log('connected');
-           
+          console.log(response.data);
         })
         .catch(e => {
           console.log(e);
         });
 
       this.submitted = true;
-     
     },
     newEmployee() {
       this.submitted = false;

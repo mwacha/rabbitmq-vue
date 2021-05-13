@@ -33,7 +33,6 @@
 
 <script>
 import http from "../http-common";
-import stomp from "../stomp";
 
 export default {
   name: "add-employee",
@@ -63,17 +62,13 @@ export default {
         .post("/employees", data)
         .then(response => {
           this.employee.id = response.data.id;
-           stomp.connect();
-          stomp.send();
-          console.log('connected');
-           
+          console.log(response.data);
         })
         .catch(e => {
           console.log(e);
         });
 
       this.submitted = true;
-     
     },
     newEmployee() {
       this.submitted = false;

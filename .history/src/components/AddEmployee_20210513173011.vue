@@ -63,9 +63,7 @@ export default {
         .post("/employees", data)
         .then(response => {
           this.employee.id = response.data.id;
-           stomp.connect();
-          stomp.send();
-          console.log('connected');
+          console.log(response.data);
            
         })
         .catch(e => {
@@ -73,7 +71,9 @@ export default {
         });
 
       this.submitted = true;
-     
+      stomp.connect();
+          stomp.send();
+          console.log('connected');
     },
     newEmployee() {
       this.submitted = false;
