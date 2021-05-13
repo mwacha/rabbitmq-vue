@@ -1,4 +1,4 @@
-# vue-springboot
+# rabbitmq-vue
 
 ## Project setup
 ```
